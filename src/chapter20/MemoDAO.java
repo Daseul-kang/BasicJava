@@ -144,7 +144,7 @@ public class MemoDAO {
         return executedUpdate;
     }
 
-    public int deleteMemo(MemoVO vo) throws Exception {
+    public int deleteMemo(int deleteNo) throws Exception {
         Class.forName("oracle.jdbc.OracleDriver");
         Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.34:1521:xe", "java", "oracle21c");
         // 워크시트를 만들고, 데이터를 저장하는 다른 방법(createStatememt 방법 말고)
@@ -157,7 +157,7 @@ public class MemoDAO {
 
         String sql = builder.toString();
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, vo.getNo());
+        statement.setInt(1, deleteNo);
 
 //         select => executeQuery()를 호출
 //         insert, update, delete => executeUpdate()를 호출해야 됨

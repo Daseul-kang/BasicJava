@@ -51,7 +51,7 @@ class MemoDAOTest {
     void deleteMemo() throws Exception {
         MemoDAO dao = new MemoDAO();
         MemoVO vo = new MemoVO(7);
-        dao.deleteMemo(vo);
+        dao.deleteMemo(7);
         MemoVO vo1 = dao.selectMemo(7);
 //        나의 방법
 //        assertNull(vo1);
