@@ -10,7 +10,7 @@ class MemoDAOTest {
 
     @org.junit.jupiter.api.Test
     void selectMemos() throws Exception {
-        MemoDAO dao = new MemoDAO();
+        MemoDAO dao = MemoDAO.getInstance();
         List<MemoVO> memos = dao.selectMemos();
 //        assertEquals(7, memos.size());
         MemoVO vo = memos.get(1);
@@ -20,7 +20,7 @@ class MemoDAOTest {
 
     @org.junit.jupiter.api.Test
     void insertmemo() throws Exception {
-        MemoDAO dao = new MemoDAO();
+        MemoDAO dao = MemoDAO.getInstance();
         dao.insertmemo(new MemoVO("첫 번째 글", "테스트 및 배포 첫 번째 수", "다슬"));
         List<MemoVO> memos = dao.selectMemos();
         // 테스트 코드를 자동화시키는 작업
@@ -30,7 +30,7 @@ class MemoDAOTest {
 
     @Test
     void updateMemo() throws Exception {
-        MemoDAO dao = new MemoDAO();
+        MemoDAO dao = MemoDAO.getInstance();
         MemoVO vo1 = new MemoVO(6, "6번째 글 수정이야", "자바는 어려워", "daseul");
         dao.updateMemo(vo1);
 
@@ -49,7 +49,7 @@ class MemoDAOTest {
 
     @Test
     void deleteMemo() throws Exception {
-        MemoDAO dao = new MemoDAO();
+        MemoDAO dao = MemoDAO.getInstance();
         MemoVO vo = new MemoVO(7);
         dao.deleteMemo(7);
         MemoVO vo1 = dao.selectMemo(7);
@@ -60,4 +60,6 @@ class MemoDAOTest {
         List<MemoVO> memos = dao.selectMemos();
         assertEquals(memos.size(), memos.size());
     }
+
+
 }

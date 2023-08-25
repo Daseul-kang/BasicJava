@@ -6,6 +6,15 @@ import java.util.List;
 
 public class MemoDAO {
 
+    // 싱글톤 패턴을 활용하여 같 객체를 여러 개 생성하지 않도록 한다.은
+    private static MemoDAO instance = new MemoDAO();
+    private MemoDAO() {
+
+    }
+    public static MemoDAO getInstance() {
+        return instance;
+    }
+
     // 전체 조회
     public List<MemoVO> selectMemos() throws Exception {
         Class.forName("oracle.jdbc.OracleDriver");

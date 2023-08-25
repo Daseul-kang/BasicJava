@@ -4,7 +4,18 @@ import java.util.List;
 
 public class MemoService {
 
-    MemoDAO dao = new MemoDAO();
+    private MemoDAO dao = MemoDAO.getInstance();
+
+    private static MemoService instance = new MemoService();
+
+    private MemoService() {
+
+    }
+
+    public static MemoService getInstance() {
+        return instance;
+    }
+
     public List<MemoVO> selectMemos() throws Exception {
         return dao.selectMemos();
     }
@@ -21,7 +32,7 @@ public class MemoService {
         return dao.updateMemo(vo);
     }
 
-    public int deleteMemo(int deleteNo) throws Exception{
+    public int deleteMemo(int deleteNo) throws Exception {
         return dao.deleteMemo(deleteNo);
     }
 }
